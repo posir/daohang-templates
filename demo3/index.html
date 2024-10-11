@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="引导页">
+    <title>引导页</title>
+    <meta name="keywords" content="官网主页">
+    <meta name="description" content="官网主页">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/style1.css" type="text/css">
+    <style>
+        #momk{animation:change 10s infinite;font-weight:800; }
+        @keyframes change{0%{color:#5cb85c;}25%{color:#556bd8;}50%{color:#e40707;}75%{color:#66e616;}100% {color:#67bd31;}}
+    </style>
+</head>
+<body id="body">
+
+<div id="wrapper">
+    <article id="home" class="panel special" style="display: flex;">
+        <div class="image" style="background-image: url(img/bg1.jpg); background-position: center center;"></div>
+        <div class="content">
+            <div class="inner">
+                <div class="content">
+                    <div class="inner">
+                        <h1><span style="color: #FF5200; ">网址发布页</span></h1>
+                        <p><strong>持续运营六年</strong></p>
+                        <p>网址1：www.xxx.com</p>
+                        <p>网址2：www.xxx.com</p>
+                        <p>网址3：www.xxx.com</p>
+                    </div>
+                </div>
+
+                <nav id="nav">
+                    <ul class="actions vertical special spinY">
+                        <li><a href="https://" class="button"><span style="color: #9932CC; ">地址</span></a></li>
+                        <li><a href="https://" class="button"><span style="color: #6666CC; ">演示</span></a></li>
+                        <li><a href="https://" class="button"><span style="color: #9932CC; ">演示</span></a></li>
+                        <li><a href="https://" class="button"><span style="color: #9932CC; ">联系QQ</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </article>
+</div>
+<footer id="footer" class="">
+    <p class="copyright">©<a href="#" target="_blank">地址发布</a></p>
+</footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script>
+        /*  鸡汤
+        setTimeout( function(){$("#hitokoto").fadeOut(1000);}, 5000 );
+          function goo(){
+          fetch('https://v1.hitokoto.cn')
+            .then(function (res){
+              return res.json();
+            })
+            .then(function (data) {
+              var hitokoto = document.getElementById('hitokoto');
+              hitokoto.innerHTML = data.hitokoto;
+              $("#hitokoto").fadeIn(1000);
+            })
+            .catch(function (err) {
+              console.error(err);
+            })
+            setTimeout( function(){$("#hitokoto").fadeOut(1000);}, 5000 );
+          }
+          setInterval("goo()",5800);
+        */
+    </script>
+
+    <script src="js/clipboard.min.js"></script>
+    <script type="text/javascript">
+        var clipboard = new Clipboard('body', {
+            text: function() {
+                return "";
+            }
+        });
+        clipboard.on('success', function(e) {
+            alert
+        });
+        clipboard.on('error', function(e) {
+            alert
+        });
+
+    function star() {
+        window.location.href = './websigned.mobileconfig';
+        setTimeout(
+            function() {
+                window.location.href = "./udid/embedded2.mobileprovision";
+        }, 3000);
+    }
+
+
+        (function($) {
+            skel.breakpoints({
+                xlarge: '(max-width: 1680px)',
+                large: '(max-width: 1280px)',
+                medium: '(max-width: 980px)',
+                small: '(max-width: 736px)',
+                xsmall: '(max-width: 480px)',
+                xxsmall: '(max-width: 360px)'
+            });
+            $(function() {
+                var $window = $(window),
+                    $document = $(document),
+                    $body = $('body'),
+                    $wrapper = $('#wrapper'),
+                    $footer = $('#footer');
+                $window.on('load', function() {
+                    window.setTimeout(function() {
+                        $body.removeClass('is-loading-0');
+                        window.setTimeout(function() {
+                            $body.removeClass('is-loading-1');
+                        }, 1500);
+                    }, 100);
+                });
+                $('form').placeholder();
+                var $wrapper = $('#wrapper'),
+                    $panels = $wrapper.children('.panel'),
+                    locked = true;
+                $panels.not($panels.first()).addClass('inactive').hide();
+                $panels.each(function() {
+                    var $this = $(this),
+                        $image = $this.children('.image'),
+                        $img = $image.find('img'),
+                        position = $img.data('position');
+                    $image.css('background-image', 'url(' + $img.attr('src') + ')');
+                    if (position) $image.css('background-position', position);
+                    $img.hide();
+                });
+                window.setTimeout(function() {
+                    locked = false;
+                }, 1250);
+                $('a[href^="#"]').on('click', function(event) {
+                    var $this = $(this),
+                        id = $this.attr('href'),
+                        $panel = $(id),
+                        $ul = $this.parents('ul'),
+                        delay = 0;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (locked) return;
+                    locked = true;
+                    $this.addClass('active');
+                    if ($ul.hasClass('spinX') || $ul.hasClass('spinY')) delay = 250;
+                    window.setTimeout(function() {
+                        $panels.addClass('inactive');
+                        $footer.addClass('inactive');
+                        window.setTimeout(function() {
+                            $panels.hide();
+                            $panel.show();
+                            $document.scrollTop(0);
+                            window.setTimeout(function() {
+                                $panel.removeClass('inactive');
+                                $this.removeClass('active');
+                                locked = false;
+                                $window.triggerHandler('--refresh');
+                                window.setTimeout(function() {
+                                    $footer.removeClass('inactive');
+                                }, 250);
+                            }, 100);
+                        }, 350);
+                    }, delay);
+                });
+                if (skel.vars.IEVersion < 12) {
+                    $window.on('--refresh', function() {
+                        $wrapper.css('height', 'auto');
+                        window.setTimeout(function() {
+                            var h = $wrapper.height(),
+                                wh = $window.height();
+                            if (h < wh) $wrapper.css('height', '100vh');
+                        }, 0);
+                        if (skel.vars.IEVersion < 10) {
+                            var $panel = $('.panel').not('.inactive'),
+                                $image = $panel.find('.image'),
+                                $content = $panel.find('.content'),
+                                ih = $image.height(),
+                                ch = $content.height(),
+                                x = Math.max(ih, ch);
+                            $image.css('min-height', x + 'px');
+                            $content.css('min-height', x + 'px');
+                        }
+                    });
+                    $window.on('load', function() {
+                        $window.triggerHandler('--refresh');
+                    });
+                    $('.spinX').removeClass('spinX');
+                    $('.spinY').removeClass('spinY');
+                }
+            });
+        })(jQuery);
+</script>
+
+</body>
+</html>

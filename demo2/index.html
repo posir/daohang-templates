@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APP下载</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="swiper">
+            <img src="assets/screen/swiper3.png" width="100%" height="auto" />
+        </div>
+        <div class="down">
+            <button><a href="#" class="download-btn" style="color: white; text-decoration: none;">安卓下载</a></button>
+            <button><a href="#" class="download-btn" style="color: white; text-decoration: none;">备用下载</a></button>
+        </div>
+        <div class="go" style="margin: 15px; border: 1px solid rgb(255, 0, 0); color: rgb(255, 0, 0); font-size: 16px; padding: 10px; border-radius: 7.5px; text-align: center;">
+            <p>七年老平台</p>
+            <p>稳定运行</p>
+            <p>24小时售后</p>
+            <p><a rel="“nofollow”" href="#" target="_blank"></a></p>
+        </div>
+        <div class="link">
+            <div class="item">
+                <img src="assets/icon/link_logo.png" width="50" height="50" />
+                <div class="info">
+                    <h3>最新官网地址</h3>
+                    <p>https://www.xxx.com</p>
+                </div>
+                <button>点击复制</button>
+            </div>
+            <div class="item">
+                <img src="assets/icon/link_mail.png" width="50" height="50" />
+                <div class="info">
+                    <h3>官方邮箱</h3>
+                    <p>www.xxx.com</p>
+                    <p>发邮件获取官网地址</p>
+                </div>
+                <button>点击复制</button>
+            </div>
+            <div class="item">
+                <img src="assets/icon/link_tg.png" width="50" height="50">
+                <div class="info">
+                    <h3>官方交流群</h3>
+                    <p>www.xxx.com</p>
+                </div>
+                <button>点击复制</button>
+            </div>
+        </div>
+        <div class="more">
+            <div id="item_title" class="item">
+                <img src="assets/img/more_title.png" width="140" height="auto" />
+            </div>
+            <div class="item"><img src="assets/screen/more0.png" width="100%" height="auto"></div>
+            <div class="item"><img src="assets/screen/more1.png" width="100%" height="auto"></div>
+            <div class="item"><img src="assets/screen/more2.png" width="100%" height="auto"></div>
+        </div>
+    </div>
+    <!--
+    <script src="https://fastly.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                system: {
+                    platform: ''
+                },
+                config: '',
+                swiper: []
+            },
+            mounted() {
+                let s = this;
+                s.getPlatform();
+                s.getConfig();
+            },
+            methods: {
+                downApp(type) {
+                    let s = this;
+                    if (type == 'android') {
+                        window.location.href = s.config.android_url;
+                    } else if (type == 'android_pan') {
+                        window.location.href = s.config.android_pan_url;
+                    } else if (type == 'ios') {
+                        var dates = new Date();
+                        var times = Math.round(dates.getTime() / 1000).toString();
+                        var mdstr = hex_md5(times).toUpperCase();
+                        var str = mdstr.concat(times) + 'XKey';
+                        //var str = mdstr.concat(times);
+                        s.copyTxt(str, false);
+                        window.location.href = s.config.ios_url;
+                    } else {
+                        window.location.href = s.config.h5_url;
+                    }
+                },
+                getPlatform() {
+                    let s = this;
+                    let u = navigator.userAgent;
+                    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+                    let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                    console.log(isAndroid);
+                    if (isAndroid) {
+                        s.system.platform = 'android';
+                    } else if (isIOS) {
+                        s.system.platform = 'ios';
+                    } else {
+                        s.system.platform = 'pc';
+                    }
+                },
+                getConfig() {
+                    let s = this;
+                    s.config = config;
+                    if ((config.img_url).substr(0, 8) == 'https://') {
+                        var img_url = config.img_url;
+                        var img_url_arr = img_url.split('//');
+                        let date = new Date();
+                        let timeFormat = s.dateFormat("YYYYmmdd", date);
+                        img_url = 'https://img' + timeFormat + '.' + img_url_arr[1];
+                        s.config.img_url = img_url;
+                    }
+                },
+                copyTxt(str, bool = true) {
+                    var dom = document.createElement("textarea");
+                    dom.value = str;
+                    //dom.setAttribute('style', 'display: block;width: 1px;height: 1px;');
+                    document.body.appendChild(dom);
+                    dom.select();
+                    var result = document.execCommand('copy');
+                    document.body.removeChild(dom);
+                    document.execCommand('copy');
+                },
+                dateFormat(fmt, date) {
+                    let ret;
+                    const opt = {
+                        "Y+": date.getFullYear().toString(),
+                        "m+": (date.getMonth() + 1).toString(),
+                        "d+": date.getDate().toString(),
+                        "H+": date.getHours().toString(),
+                        "M+": date.getMinutes().toString(),
+                        "S+": date.getSeconds().toString()
+                    };
+                    for (let k in opt) {
+                        ret = new RegExp("(" + k + ")").exec(fmt);
+                        if (ret) {
+                            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                        };
+                    };
+                    return fmt;
+                }
+            }
+        })
+    </script>
+    -->
+</body>
+</html>

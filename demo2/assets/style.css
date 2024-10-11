@@ -1,0 +1,125 @@
+*{padding: 0;border: 0;margin: 0;}
+body{
+    overflow-x: hidden;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    background: #ffffff;
+    max-width: 480px;
+    margin: 0 auto;
+}
+	.down{
+		display: flex;
+		padding: 15px 7.5px;
+	}
+    .down button{
+        margin: 0 7.5px;
+        background: linear-gradient(to right, #742de5, #e35070);
+        color: #fff;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 20px;
+        width: calc(50% - 15px);
+        font-size: 16px;
+    }
+	.down_help{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 0 60rpx 0;
+	}
+    .down_help .down_help_1{
+        margin: 0 0 7.5px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 540rpx;
+    }
+    .down_help .down_help_2{
+        margin: 0 0 7.5px 0;
+    }
+    .down_help .down_help_2 b{
+        color: #f00;
+        font-weight: normal;
+    }
+	.link{
+		background: #f0e4fb;
+		margin: 15px;
+		border-radius: 7.5px;
+		padding: 15px;
+	}
+    .link .item{
+        margin: 0 0 7.5px 0;
+        display: flex;
+        align-items: center;
+    }
+    .link .item:last-child{
+        margin: 0;
+    }
+    .link .item .info{
+        flex: 1;
+        margin: 0 7.5px;
+    }
+    .link .item .info h3{
+        font-size: 28rpx;
+    }
+    .link .item .info p{
+        font-size: 24rpx;
+    }
+    .link .item button{
+        width: 90px;
+        background: none;
+        height: 30px;
+        line-height: 30px;
+        border:1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+    }
+	.more{
+		background: #f0e4fb;
+		margin: 15px;
+		padding: 15px;
+		border-radius: 7.5px;
+	}
+    .more img{
+        margin: 0 0 7.5px 0;
+    }
+    .more.item{
+        margin: 0 0 15px 0;
+    }
+    .more.item:last-child{
+        margin: 0;  
+    }
+    .more #item_title{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .content{
+		padding: 15px;
+		
+	}
+    .content .item{
+        margin: 0 0 15px 0;
+        border: 1px solid #eee;
+    }
+
+    .content_android{
+        padding: 15px;
+    }
+    .content_android .collapse{
+
+    }
+    .content_android .collapse .collapse_item{}
+    .content_android .collapse .collapse_item .item_title{
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #ccc;
+        padding: 0 5px;
+        margin: 0 0 7.5px 0;
+        background: #eee;
+        font-size: 16px;
+    }
+    .u-collapse-content{}
+    .u-collapse-content .item{}
