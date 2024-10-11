@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html class="basic basic_index" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title>引导</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+	<link href="static/image/favicon.ico" rel="icon">
+	<link href="static/image/favicon.ico" rel="apple-touch-icon">
+    <meta content="" name="description" />
+    <meta content="导航页" name="keywords"/>
+    <meta content="#00C66B" name="theme-color" />
+    <link href="static/css/css-PlayfairDisplay.css" rel="stylesheet" />
+    <link href="static/css/css-Poppins400600.css" rel="stylesheet" />
+    <link href="static/css/basic-1765b545.css" rel="stylesheet" />
+	<link href="static/css/font_954744_g42joo6uzdr.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <main>
+	  <section class="hero" id="hero">
+        <div class="hero-content">
+          <div class="hero-header">
+            <div class="-logo">
+              <a href="#"><img src="static/image/logo.png" /></a>
+            </div>
+            <div class="-cta js--localscroll">
+              <a class="button button--hollow" href="#"> + 加入我们..</a>
+            </div>
+          </div>
+
+          <div class="hero-banner">
+			 <h4><div class="jzys" id="chakhsu"></div></h4>
+			 <br>
+			 <div class="landing-buttons"><a class="landing-button" href="#" target="_blank">地址发布</a></div>
+
+            <div class="-cta">
+              <a href="#section1"> <i data-feather="arrow-down"></i> </a>
+            </div>
+          </div>
+          <div class="hero-footer">
+            <div class="-counter">
+              <p><small>运行时间 </small></p>
+			  <div class="time" id="sitetime"></div>
+            </div>
+            <div class="-social">
+              <p><small>关注我们</small></p>
+              <ul>
+                <li><a class="twitter" href=""><i class="zm zm-waiwai"></i></a></li>
+                <li><a class="facebook" href=""><i class="zm zm-QQ"></i></a></li>
+                <li><a class="instagram" href=""><i class="zm zm-ziyuan"></i></a></li>
+                <li><a class="google-plus" href=""><i class="zm zm-weixin"></i></a></li>
+                <li><a class="linkedin" href=""><i class="zm zm-APIguanli"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="highlights styled" id="section1">
+        <hr />
+        <div class="highlights-header">
+          <h6>最新网站</h6>
+		  <div class="grid" style="position: relative; height: 350px;">
+                  <div class="grid-item">
+                        <div class="wrap-article">
+                            <img alt="blog-4" class="img-circle text-center" src="">
+                            <p class="subtitle fancy"><span>创始人</span></p>
+                            <a href="#"><h3 class="title">积极</h3></a>
+                            <p class="content-blog">导航</p>
+                        </div>
+                  </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="gallery">
+        <div class="gallery-grid">
+          <div class="-image columns large-6 large-offset-1 medium-6 small-12"></div>
+        </div>
+      </div>
+      <section class="clients styled">
+        <hr class="half" />
+      </section>
+    </main>
+
+    <footer class="footer styled">
+      <div class="footer-content">
+        <div class="-logo">
+          <a href="index1.html"><img src="static/image/logo.png" /></a>
+        </div>
+        <p class="-copyright"><small>© <time datetime="2024">2024</time> All rights reserved.</small></p>
+      </div>
+    </footer>
+
+	<link href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" rel="stylesheet">
+    <div class="aplayer" data-autoplay="true" data-fixed="true" data-id="2440040711" data-server="netease" data-type="playlist" data-volume="0.35" ></div>
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+    <script>
+        var chakhsu = function (r) {
+            function t() {
+                return b[Math.floor(Math.random() * b.length)]
+            }
+            function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+            }
+            function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                    var l = document.createElement("span");
+                    l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+            }
+            function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+            }
+            /*以下内容自定义修改*/
+            var l = ""
+                o = ["恭喜你发现了宝藏","日久见人心"].map(function (r) {
+                    return r + ""
+                }), a = 2, g = 1, s = 5, d = 75,
+                b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                c = {text: "", prefixP: -s, skillI: 0, skillP: 0, direction: "forward", delay: a, step: g};
+            i()
+        };
+        chakhsu(document.getElementById('chakhsu'));
+		</script>
+    <script src="static/js/jquery-59e367f0.js"></script>
+    <script src="static/js/threejs-6ebcc050.js"></script>
+    <script src="static/js/projector-2f448d36.js"></script>
+    <script src="static/js/canvasrenderer-0792e9f3.js"></script>
+    <script src="static/js/feather-cae18e22.js"></script>
+    <script src="static/js/imagesloaded-566550fd.js"></script>
+    <script src="static/js/jquery-countdown-38fb1392.js"></script>
+    <script src="static/js/jquery-scrollto-94f5d0cb.js"></script>
+    <script src="static/js/jquery-localscroll-640631e1.js"></script>
+    <script src="static/js/packery-8c62b54b.js"></script>
+    <script src="static/js/magnific-popup-c9f972e2.js"></script>
+    <script src="static/js/slick-carousel-3b41b3bc.js"></script>
+    <script src="static/js/sphere-dark-16cf345f.js"></script>
+    <script src="static/js/main-d441790e.js"></script>
+    <script src="static/js/basic-9ff86e20.js"></script>
+    <script src="static/js/wikisj.js"></script>
+  </body>
+</html>
