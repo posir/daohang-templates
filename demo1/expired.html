@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 120.19px">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>域名即将停用!!!</title>
+    <link rel="stylesheet" href="res/page.css" />
+  </head>
+  <body>
+    <div id="container" class="container">
+      <img class="container-bg bg-filter-gray" style="filter: grayscale(90%);"  src="res/slice14.png" alt="" />
+      <div class="content">
+        <img class="title" src="res/slice18-1.png" alt="" />
+        <div class="box">
+            <div class="g-flex_spb g-flex_aic box-title">
+                <img class="arrow" src="res/slice1.png" alt="" />
+                <div class="download-btn">
+                    <a href="#" target="_blank"> <img src="res/Slice18@2x.png" alt="" /> 下载APP </a>
+                </div>
+            </div>
+          <div class="g-flex_jcc g-flex_aic stop">
+            本域名已停用
+          </div>
+          <div class="g-flex_spb g-flex_aic g-flex_wrap">
+            <div class="box-btn box-btn-type shadow-black copy-btn">
+              <span>牢记最新网址<span class="colon">:</span></span>
+              <span>www.xxx.com</span>
+            </div>
+          </div>
+            <div class="copyright">
+                <div class="g-flex_aic">
+                    <img src="res/email.png" alt="" />
+                    <b>官方邮箱<span class="colon">：</span></b>
+                </div>
+                <div>
+                    <b>xxx@gmail.com </b>
+                    <div class="border"></div>
+                </div>
+            </div>
+          <div class="box-btn box-btn-type1" style="background-color: #fffdf5; padding: 0.34rem 0.28rem 0.28rem">
+            <div class="box-btn-tag">
+              <img class="tag-img" src="res/slice5.png" alt="" />
+              <span class="tag-title">温馨提示</span>
+            </div>
+            <img class="box-btn-extra" src="res/slice9.png" alt="" />
+            <p class="box-btn-tip">
+              <b style="color: #ff3f84">牢记官方邮箱，</b>
+              <b style="color: #ff3f84"></b>不会走丢！！！
+            </p>
+            <p class="box-btn-tip">一定要<b>使用电信联通网络</b>！！！</p>
+            <div class="point g-flex_aic g-flex_jcc">
+              <img src="res/finger2.gif" alt="" />
+              请截图保存
+              <img src="res/finger2.gif" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<script>
+    (function () {
+        const container = document.getElementById('container');
+        function init() {
+            setRem();
+            setClassName();
+            window.onresize = function () {
+                setRem();
+                setClassName();
+            };
+        }
+        function getIsMobile() {
+            return window.innerWidth < 768;
+        }
+        function setClassName() {
+            const isMobile = getIsMobile();
+            const classs = container.classList;
+            const classArr = [...classs];
+            if (classArr.indexOf('pc') === -1 && classArr.indexOf('mobile') === -1) {
+                classs.add(isMobile ? 'mobile' : 'pc');
+            } else if (
+                (classArr.indexOf('pc') > -1 && !isMobile) ||
+                (classArr.indexOf('mobile') > -1 && isMobile)
+            ) {
+                return;
+            } else {
+                classs.replace(isMobile ? 'pc' : 'mobile', isMobile ? 'mobile' : 'pc');
+            }
+        }
+        function setRem() {
+            const edges = [375, 420, 768, 820, 1050, 1440, 1920];
+            const baseSize = 100;
+            const vW = window.innerWidth;
+            const idx = edges.findIndex((item) => item - vW > 0);
+            const maxIdx = idx == -1 ? edges.length - 1 : idx == 0 ? idx : idx - 1;
+            const baseVal = baseSize / edges[maxIdx];
+            const rem = vW * baseVal;
+            document.documentElement.style.fontSize = rem + 'px';
+        }
+        init();
+    })();
+</script>
+  </body>
+</html>
