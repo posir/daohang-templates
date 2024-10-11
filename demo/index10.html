@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>地址发布页，收藏我回家不迷路！</title>
+    <meta name="description" content="刀客源码网-地址发布页，收藏我回家不迷路！">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --text-color: #1f2937;
+            --card-background: rgba(255, 255, 255, 0.9);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --background-light: linear-gradient(-45deg, #e6f2ff, #fff0f5, #f0f7ff, #fff5e6);
+            --background-dark: linear-gradient(-45deg, #1a202c, #2d3748, #4a5568, #2d3748);
+        }
+        .dark-mode {
+            --primary-color: #60a5fa;
+            --secondary-color: #3b82f6;
+            --text-color: #e2e8f0;
+            --card-background: rgba(26, 32, 44, 0.9);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'HarmonyOS Sans SC', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--background-light);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: var(--background-dark);
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .wrapper {
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+        .main {
+            background-color: var(--card-background);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        .main:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        ul {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(248, 250, 252, 0.8);
+            border-radius: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            padding-top: 1.5rem;
+        }
+        .dark-mode li {
+            background-color: rgba(26, 32, 44, 0.8);
+        }
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        li a:hover {
+            color: var(--secondary-color);
+        }
+        li a i {
+            margin-right: 0.5rem;
+            font-size: 1.2em;
+        }
+        .notice {
+            background-color: rgba(230, 242, 255, 0.8);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        .dark-mode .notice {
+            background-color: rgba(44, 55, 72, 0.8);
+        }
+        .notice:hover {
+            background-color: rgba(230, 242, 255, 1);
+        }
+        .dark-mode .notice:hover {
+            background-color: rgba(44, 55, 72, 1);
+        }
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-color);
+            font-weight: 300;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        .footer:hover {
+            opacity: 1;
+        }
+        .bookmark-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .bookmark-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .bookmark-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        .bookmark-btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        @keyframes ripple {
+            0% { transform: scale(0, 0); opacity: 1; }
+            20% { transform: scale(25, 25); opacity: 1; }
+            100% { opacity: 0; transform: scale(40, 40); }
+        }
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: move 25s infinite linear;
+        }
+        .dark-mode .bg-animation span {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .bg-animation span:nth-child(1) { top: 20%; left: 20%; animation-duration: 15s; }
+        .bg-animation span:nth-child(2) { top: 60%; left: 80%; animation-duration: 17s; width: 40px; height: 40px; }
+        .bg-animation span:nth-child(3) { top: 40%; left: 40%; animation-duration: 19s; }
+        .bg-animation span:nth-child(4) { top: 80%; left: 10%; animation-duration: 21s; }
+        @keyframes move {
+            0% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; border-radius: 0; }
+            100% { transform: translateX(-1000px) translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+        @media (max-width: 768px) {
+            body {
+                font-size: calc(14px + 0.390625vw);
+            }
+            .main {
+                padding: 2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        .ms-display {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 0.7em;
+            padding: 2px 5px;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .ms-checking {
+            background-color: #ffeb3b;
+            color: black;
+        }
+        .ms-normal {
+            background-color: #4CAF50;
+        }
+        .ms-error {
+            background-color: #f44336;
+        }
+        .status-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            color: white;
+        }
+        .status-normal {
+            background-color: #4CAF50;
+        }
+        .status-error {
+            background-color: #f44336;
+        }
+        .status-checking {
+            background-color: #ffeb3b;
+            color: black;
+        }
+        li.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        li.disabled a {
+            pointer-events: none;
+        }
+        .mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .mode-toggle:hover {
+            color: var(--primary-color);
+        }
+        #stats-container {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        #stats-container:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        #last-checked-time {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        .icon-clock, .icon-check, .icon-times {
+            margin-right: 5px;
+        }
+        .icon-check {
+            color: #4CAF50;
+        }
+        .icon-times {
+            color: #f44336;
+        }
+        .url-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+        .wrapper {
+            padding: 1rem;
+        }
+        .main {
+            padding: 1.5rem;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .bookmark-btn {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            padding-top: 1.25rem;
+        }
+        .url-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .url-content span:first-child {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        li a {
+            font-size: 0.8rem;
+        }
+        .status-badge {
+            font-size: 0.7em;
+            padding: 1px 4px;
+            margin-left: 0;
+            margin-top: 0.25rem;
+        }
+        .ms-display {
+            font-size: 0.6em;
+            padding: 1px 3px;
+        }
+        .notice {
+            padding: 0.75rem;
+            font-size: 0.8rem;
+        }
+        #stats-container {
+            padding: 10px;
+            margin-top: 15px;
+        }
+        #last-checked-time {
+            font-size: 0.9em;
+        }
+        .stat-value {
+            font-size: 1.2em;
+        }
+        .stat-label {
+            font-size: 0.8em;
+        }
+        .footer {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+        }
+        .mode-toggle {
+            font-size: 1.2rem;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="wrapper">
+        <button class="mode-toggle" id="mode-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <main class="main">
+            <h1>地址发布页</h1>
+            <button class="bookmark-btn">
+                <i class="fas fa-bookmark"></i> Ctrl+D 收藏本页到浏览器收藏夹
+            </button>
+            <ul id="url-list">
+                <li data-url="https://www.demo.com/">
+                    <span class="ms-display">-ms</span>
+                    <div class="url-content">
+                        <span>游戏网</span>
+                        <a href="https://www.demo.com/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> https://www.demo1.com
+                        </a>
+                        <span class="status-badge status-checking">检测中...</span>
+                    </div>
+                </li>
+                <li data-url="https://aaa.xyz/">
+                    <span class="ms-display">-ms</span>
+                    <div class="url-content">
+                        <span>镇府网</span>
+                        <a href="https://aaa.com" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> https://www.demo2.com
+                        </a>
+                        <span class="status-badge status-checking">检测中...</span>
+                    </div>
+                </li>
+                <li data-url="https://ccc.xyz/">
+                    <span class="ms-display">-ms</span>
+                    <div class="url-content">
+                        <span>百度搜索</span>
+                        <a href="https://www.baidu.com/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> https://www.baidu.com
+                        </a>
+                        <span class="status-badge status-checking">检测中...</span>
+                    </div>
+                    </li>
+                <li data-url="https://cn.bing.com/">
+                    <span class="ms-display">-ms</span>
+                    <div class="url-content">
+                        <span>bing</span>
+                        <a href="https://cn.bing.com/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> https://cn.bing.com
+                        </a>
+                        <span class="status-badge status-checking">检测中...</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="notice">
+                <i class="fas fa-info-circle"></i>部分节点无法访问，请更换！
+            </div>
+            <div id="stats-container"></div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2024 导航页. 保留所有权利。</p>
+        </footer>
+    </div>
+
+<script>
+function updateUrlStatus(li, isAccessible, duration) {
+    const statusBadge = li.querySelector('.status-badge');
+    const msDisplay = li.querySelector('.ms-display');
+    li.classList.remove('disabled');
+
+    let statusClass;
+    if (isAccessible) {
+        statusBadge.textContent = '正常';
+        statusClass = 'status-normal';
+    } else {
+        li.classList.add('disabled');
+        statusBadge.textContent = '无法访问';
+        statusClass = 'status-error';
+    }
+
+    statusBadge.className = `status-badge ${statusClass}`;
+    msDisplay.textContent = duration + 'ms';
+    msDisplay.className = `ms-display ms-${statusClass.split('-')[1]}`;
+}
+
+function checkUrl(url, li) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        let isResolved = false;
+        const startTime = performance.now();
+
+        const timeoutId = setTimeout(() => {
+            if (!isResolved) {
+                updateUrlStatus(li, false, 5000);
+                isResolved = true;
+                resolve(false);
+            }
+        }, 5000); // 5秒超时
+
+        img.onload = function() {
+            if (!isResolved) {
+                clearTimeout(timeoutId);
+                const endTime = performance.now();
+                const duration = Math.round(endTime - startTime);
+                updateUrlStatus(li, true, duration);
+                isResolved = true;
+                resolve(true);
+            }
+        };
+
+        img.onerror = function() {
+            if (!isResolved) {
+                clearTimeout(timeoutId);
+                const endTime = performance.now();
+                const duration = Math.round(endTime - startTime);
+                updateUrlStatus(li, false, duration);
+                isResolved = true;
+                resolve(false);
+            }
+        };
+
+        // 添加一个随机参数来避免缓存
+        img.src = url + '/favicon.ico?' + new Date().getTime();
+    });
+}
+
+async function checkAllUrls() {
+    const urlList = document.getElementById('url-list');
+    const listItems = urlList.querySelectorAll('li');
+    let accessibleCount = 0;
+    let inaccessibleCount = 0;
+
+    const checkPromises = Array.from(listItems).map(li => {
+        const url = li.dataset.url;
+        const statusBadge = li.querySelector('.status-badge');
+        const msDisplay = li.querySelector('.ms-display');
+        statusBadge.textContent = '检测中...';
+        statusBadge.className = 'status-badge status-checking';
+        msDisplay.className = 'ms-display ms-checking';
+        msDisplay.textContent = '-ms';
+        return checkUrl(url, li);
+    });
+
+    const results = await Promise.all(checkPromises);
+    results.forEach(isAccessible => {
+        if (isAccessible) {
+            accessibleCount++;
+        } else {
+            inaccessibleCount++;
+        }
+    });
+
+    updateLastCheckedTimeAndStats(accessibleCount, inaccessibleCount);
+}
+
+function updateLastCheckedTimeAndStats(accessibleCount, inaccessibleCount) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+
+    document.getElementById('stats-container').innerHTML = `
+        <div id="last-checked-time">
+            <i class="fas fa-clock icon-clock"></i> 最后检测时间: ${timeString}
+        </div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">
+                    <i class="fas fa-check icon-check"></i>${accessibleCount}
+                </div>
+                <div class="stat-label">正常数量</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">
+                    <i class="fas fa-times icon-times"></i>${inaccessibleCount}
+                </div>
+                <div class="stat-label">无法访问数量</div>
+            </div>
+        </div>
+    `;
+}
+
+// 初始检查
+checkAllUrls();
+
+// 每1分钟检查一次
+setInterval(checkAllUrls, 60 * 1000);
+
+// 暗黑模式切换
+const modeToggle = document.getElementById('mode-toggle');
+const body = document.body;
+const icon = modeToggle.querySelector('i');
+
+function setDarkMode(isDark) {
+    if (isDark) {
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        body.classList.remove('dark-mode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+    }
+}
+
+function checkSystemPreference() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function initializeDarkMode() {
+    const userPreference = localStorage.getItem('darkMode');
+    if (userPreference === 'enabled') {
+        setDarkMode(true);
+    } else if (userPreference === 'disabled') {
+        setDarkMode(false);
+    } else {
+        setDarkMode(checkSystemPreference());
+    }
+}
+
+// 初始化暗黑模式
+initializeDarkMode();
+
+// 监听系统主题变化
+window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+    if (localStorage.getItem('darkMode') === null) {
+        setDarkMode(e.matches);
+    }
+});
+
+// 切换按钮点击事件
+modeToggle.addEventListener('click', () => {
+    setDarkMode(!body.classList.contains('dark-mode'));
+});
+
+// 收藏按钮功能
+document.querySelector('.bookmark-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+        window.sidebar.addPanel(document.title, window.location.href, '');
+    } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+        window.external.AddFavorite(location.href, document.title);
+    } else if (window.opera && window.print) { // Opera Hotlist
+        this.title = document.title;
+        return true;
+    } else { // webkit - safari/chrome
+        alert('请使用' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D 添加到收藏夹。');
+    }
+});
+</script>
+</body>
+</html>

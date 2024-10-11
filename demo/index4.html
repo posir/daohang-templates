@@ -1,0 +1,88 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地址发布</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            text-align: center;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1, h3 {
+            margin: 0.5em 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            border: none;
+            background: linear-gradient(145deg, #f093fb, #f5576c);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><i class="fas fa-broadcast-tower icon"></i> 地址发布页 </h1>
+    <h3>请下载地址发布器或保存此页面即可随时找到新地址，请多点几次，每次会给出不同地址！</h3>
+    <button class="button" onclick="window.open(&#39;#&#39;, &#39;_blank&#39;)"><i class="fas fa-hand-pointer icon"></i> 最新地址</button>
+    <button class="button" onclick="window.open(&#39;#&#39;, &#39;_blank&#39;)"><i class="fas fa-hand-pointer icon"></i> 论坛临时地址(推荐)</button>
+    <button class="button" onclick="window.open(&#39;#&#39;, &#39;_blank&#39;)"><i class="fas fa-hand-pointer icon"></i> 影院临时地址(推荐)</button>
+    <div class="footer">
+        <p>如以上地址都无法访问,请耐心等待，或许我们正在修复，若长时间无法访问，请发送邮件至 demo@gmail.com</p>
+        <p>获取新的地址，如还是无法访问，请使用代理或VPN访问即可，海外用户可访问我们的永久地址 demo1.com / demo2.com</p>
+    </div>
+</div>
+</body>
+</html>
