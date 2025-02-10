@@ -17,5 +17,5 @@
 ## License
 MIT
 
-**Free Software, Hell Yeah!**
+**Free Coding, Hell Yeah!**
 
