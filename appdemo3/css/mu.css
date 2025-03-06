@@ -1,0 +1,23 @@
+<!--默认模板样式END-->.card-list .card-icon {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAS1BMVEUAAAD+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEb+XEZhhKCXAAAAGHRSTlMA7oPoSgkF4bSdlJB3+fDKvqhiVykfF49YlljwAAAAsElEQVRYw+3QSQ6DMBBEUQ9g5nlI3f+kgUgBZFlYtKKs6m+r9RatGLuUmiJRkZLCpFGoBNCNN3fp2AEoo1CLPV3N4XmuNPbaKIRv/eT8zU39McehM2uW67IYC4igrTw5HpwDkENAVq9KrXUGCKGzZhgaQAj5EdpylYYgXToPMhBmPCiDMOtBEEeI0E8gJggId7cRIkSIECFChP4O2eeQDUKv51AdhNJCP4J0nijGPr0BdermD43UAh4AAAAASUVORK5CYII=) no-repeat scroll 0 0;
+    background-size: cover;
+}
+
+.gift-panel .red-packet {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAA6tJREFUeAHtm01IVFEUx++5T+kDNdoEBS1aBBq0CvpYFULpaBJSOdOHmG5qUSsDoUIGXIhJGQURVGgRmUoELWqEaFOLWgQRtGgR1Kq1WOnou+9038jNGwRn3p0382Zx3Jx7z/Hd/5nf+7/77ixGCP5jAkyACSRHAFykERFUOvVKCGx2ub7S1wBAvzeVu+6iK10u0oLoSTmg6fou11fyGt3jB9m096arppODjJjKtA5hgFfMvNoiCMhLD3fB5Oxn196cHGTEZGP9kHbTJzOvvoiDpcAJP09kQNjducmAgOzMkvRkD4BYNrmqiQDv5LGGa3Y/fibVZ8+LGUcGpPILd+yF4fGLjwLEkJ1LeqwfrQWvVpyBrhllesHMka2AOGbmxcbIgPSbq9NPp07ZArJx33C4Gdq5RMcAl+BR7ovdgwoW7+u3b4OdK2bsAEhow+AtPN2y2QhANutLT/SEm6LJJRYB3simPf+8tVSm5Zzu56BLT06A9J3YqJbgri1Y2AxBZO1cpcd6L/zlCejVNyww2tjdsU0EYtTMo0YnQCsi2O6n23ptQXm0flTb672dq+gYxABMvfxqNAsH2vzyOApRZ3JRYwmA9KOGaizc/IxouCl6tRC+1RZNrnIRXsvJ3G1bLziRuqD3zP12Luq4JED6zmxQmL9ni65sjnDZzpV7rPe+ea9G9oUnfKOFJw9v14/WsJm7xpIAFUQRD6l061m7AX20v6H99dbOlXOMEvr1ceO70cBsViq1PIEC15uca4z8VcPvavl7l4yoXuSnlLATnuS+mVwYwz3AnpdrbDsn1FCZ1EUMgv9uzDXTs5F6qomjaU2sTqEY10Ca7WbtcRw6xayB6famAP3YDq6lP2Kma8QDQabtvJkmEXH6uKfQn0AUa+PSj8VBq80EV/Upe85bt+a5GH82t5qvwKinY0vwdH5EK+2OUy1WQCt3Lnigfi8IkW6Ns8/E1orvEUvsI5RXmAERfBkQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldhADIggQZXYQAyIIEGV2EAMiCBBldlDcgPSv+34Qa1Zt2aV3Bwfhw6olQDYWvffIgOSOhkH9k70Rl7tB9l+mfwh7DXsOey+TBC/LBJgAEygLgT9zNt4ups4e7wAAAABJRU5ErkJggg==) no-repeat scroll 0 0;
+    background-size: cover;
+}
+
+.card-list a.w-btn.is-red,
+.card-list a.w-btn:link.is-red,
+.card-list a.w-btn:visited.is-red,
+.card-list a.w-btn:hover.is-red,
+.card-list a.w-btn:active.is-red {
+    border-color: rgb(252, 86, 71);
+    color: rgb(252, 86, 71);
+}
+
+.ani-dot-for-init {
+    animation: dot 1s infinite step-start;
+    -webkit-animation: dot 1s infinite step-start;
+}

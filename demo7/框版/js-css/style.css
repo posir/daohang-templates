@@ -1,0 +1,257 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.IIV::-webkit-media-controls-play-button,
+.IIV::-webkit-media-controls-start-playback-button {
+    opacity: 0;
+    pointer-events: none;
+    width: 5px;
+}
+
+#wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+/* è§†é¢‘swiperå•ä¸ªè½®æ’­éƒ¨åˆ† */
+
+.swiper-container {
+    width: 100%;
+    height: 93%;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* 	background: #333; */
+    /* opacity: 0.5; */
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-image: url(https://tucdn.wpon.cn/2021/12/20/4ec0587beec57.jpg);
+    background-size: cover;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.swiper-slide>.play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide>.play>img {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.desc {
+    position: absolute;
+    left: 0.13rem;
+    /*bottom: 0.3rem;*/
+    width: 2rem;
+    color: #fff;
+}
+
+.desc_name {
+    color: #26bbff;
+    font-size: 0.14rem;
+    margin-bottom: 0.05rem;
+}
+
+.desc_title {
+    /* color: #fff; */
+    font-size: 0.14rem;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+
+.function {
+    width: 50px;
+    position: absolute;
+    right: 0.05rem;
+    bottom: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 997;
+}
+
+
+
+.function .dianzan {
+    margin-bottom: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.function .xiarou-go {
+    margin-bottom: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.dianzan_number,
+.xiarou-go_number {
+    font-size: 12px;
+    transform: scale(0.6);
+    width: 0.4rem;
+    left: -0.076rem;
+    text-align: center;
+    color: #fff;
+}
+
+.function .guanzhu img,
+
+/* .function .dianzan img, */
+
+.function .xiarou-go img,
+.function .zhuanfa img {
+    width: 25px;
+    height: 25px;
+}
+
+.function .dianzan #hongxin {
+    width: 25px;
+    height: 25px;
+}
+
+.xin {
+    background: url(https://tucdn.wpon.cn/2021/12/20/af656734537c2.svg);
+    background-size: 25px 25px;
+}
+
+.xin_active {
+    background: url(https://tucdn.wpon.cn/2021/12/20/b4611ee919bbf.svg);
+    background-size: 25px 25px;
+}
+
+
+
+.zhifa {
+    flex: 1;
+    border-right: 1px solid #fff;
+    text-align: center;
+}
+
+.meifa {
+    flex: 1;
+    border-right: 1px solid #fff;
+    text-align: center;
+}
+
+.yangfa {
+    flex: 1;
+    border-right: 1px solid #fff;
+    text-align: center;
+}
+
+.shipin {
+    flex: 1;
+    text-align: center;
+}
+
+.botWrap {
+    height: 7%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    z-index: 997;
+}
+
+
+/* åº•éƒ¨å¯¼èˆªæ  */
+
+.tabbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.tabbarIndex,
+.tabbarSearch,
+.tabbarMine,
+.tabbarXiangji,
+.tabbarCity {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    height: 100%;
+}
+
+.tabbarIndex>img,
+.tabbarCity>img,
+.tabbarSearch>img,
+.tabbarMine>img {
+    width: 0.22rem;
+    height: 0.22rem;
+    margin-top: 0.04rem;
+    margin-bottom: 0.02rem;
+}
+
+.tabbarXiangji {
+    position: relative;
+}
+
+.tabbarXiangji>img {
+    width: 0.5rem;
+    height: 0.5rem;
+    top: -0.1rem;
+    position: absolute;
+    /* width: 0.4rem;
+	height: 0.4rem;
+	position: absolute;
+	top: 0.03rem; */
+}
+
+.tabbarIndex>span {
+    font-size: 0.12rem;
+    color: #999999;
+}
+
+.tabbarSearch>span,
+.tabbarCity>span,
+.tabbarMine>span {
+    font-size: 0.12rem;
+    color: #999999;
+}

@@ -1,0 +1,36 @@
+  /*滚动效果*/
+  
+  .detail-pic-panel {
+      position: relative;
+      padding: 16px 0!important;
+      width: 100%;
+      overflow: hidden;
+  }
+  
+  .detail-pic-panel .mod-scroll-bar .scroll,
+  .detail-pic-panel ul {
+      -webkit-transition: -webkit-transform 500ms;
+      transition: -webkit-transform 500ms;
+  }
+  
+  .detail-pic-panel ul:after {
+      display: none!important;
+  }
+  
+  .detail-pic-panel ul li {
+      margin-left: 14px!important;
+      margin-right: 0!important;
+  }
+  
+  .mod-scroll-bar {
+      position: absolute;
+      bottom: 1px;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+  }
+  
+  .mod-scroll-bar .scroll {
+      height: 2px;
+      background: #999;
+  }

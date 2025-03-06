@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>引导页</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Ensure the body takes up the full viewport height */
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #sb {
+      border: 1px solid #ffffff;
+      background-color: #99ccff;
+      width: 400px;
+      height: 14px;
+      position: relative;
+      overflow: hidden; /* Ensure content doesn't overflow */
+    }
+
+    #sbChild1 {
+      background-color: #000000;
+      width: 0%; /* Initial width is 0 */
+      height: 100%;
+      transition: width 0.1s linear; /* Smooth transition for the width */
+    }
+    #sbValue {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color:white;
+      font-size:10px;
+      display:flex;
+      justify-content: center;
+      align-items:center;
+    }
+
+    #infor {
+      font-size: 11px;
+      color: #999999;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div id="sb">
+    <div id="sbChild1"></div>
+    <div id="sbValue">0%</div>
+  </div>
+  <div id="infor">页面正在跳转中，请稍候...</div>
+</div>
+
+<script>
+  function setSB(v, el, inforEl, message) {
+    const filterEl = el.querySelector('#sbChild1');
+    const valueEl = el.querySelector('#sbValue');
+    filterEl.style.width = v + "%";
+    valueEl.innerText = v + "%";
+    inforEl.innerText = message;
+  }
+
+  function fakeProgress(v, el, inforEl) {
+    if (v >= 100) {
+      // Redirect when progress reaches 100%
+      window.location.href = "https://你的域名"; // Replace with your desired URL
+    } else {
+      setSB(v, el, inforEl, "页面正在跳转中，请稍候...");
+      setTimeout(() => {
+        fakeProgress(v + 1, el, inforEl);
+      }, 10);
+    }
+  }
+
+  window.onload = () => {
+    const sbElement = document.getElementById("sb");
+    const inforElement = document.getElementById("infor");
+    fakeProgress(0, sbElement, inforElement);
+  };
+</script>
+</body>
+</html>

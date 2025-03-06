@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>跳转网址安全提醒</title>
+	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<style>
+		html, body {
+			background: #F3F4F5;
+			font-family: PingFang SC, Hiragino Sans GB, Arial, Microsoft YaHei, Verdana, Roboto, Noto, Helvetica Neue, sans-serif;
+			padding: 0;
+			margin: 0;
+			display: flex; /* Use flexbox for vertical centering */
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh; /* Ensure full viewport height */
+		}
+
+		a {
+			text-decoration: none;
+			color:inherit;
+		}
+
+		.urlArea {
+			width: 450px;
+			max-width: 94%;
+			margin: auto;
+			word-break: break-all;
+		}
+
+		.urlArea .logo img {
+			display: block;
+			margin: auto;
+			margin-bottom: 16px;
+			max-width: 350px;
+			width:100%;
+		}
+
+		.urlArea .main {
+			background: #fff;
+			padding: 24px;
+			border-radius: 12px;
+			border: 1px solid #E1E1E1;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+		}
+
+		.urlArea .flex {
+			display: flex;
+			align-items: center;
+		}
+
+		.urlArea .btn {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			flex-wrap:wrap;/*for small screen*/
+		}
+
+		.urlArea .tip {
+			background: #e8eefa;
+			padding: 12px;
+			margin-bottom: 16px;
+			border-radius: 4px;
+		}
+
+		.urlArea .urlColor {
+			color: red;
+		}
+
+		.urlArea .urlBox {
+			font-size: 14px;
+			color: #222226;
+			line-height: 24px;
+			margin-bottom: 24px;
+		}
+
+		.urlArea .ico {
+			width: 24px;
+			height: 24px;
+		}
+
+		.urlArea .goBtn {
+			white-space: nowrap;
+			font-size: 14px;
+			background-color: #408ffa;
+			color: #ffffff;
+			border: 1px solid #408ffa;
+			display: inline-block;
+			box-sizing: border-box;
+			padding: 6px 18px;
+			border-radius: 18px;
+			margin-left: 8px;
+			transition:background-color .3s ease;/*add transition*/
+		}
+		.urlArea .goBtn:hover {
+			background-color: #1e73e8;/*add hover style*/
+		}
+
+		.urlArea .icoTxt {
+			font-size: 16px;
+			font-weight: 600;
+			color: #222226;
+			line-height: 22px;
+			margin-left: 12px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		#isOk{
+			margin-right:5px;
+		}
+		@media (max-width: 600px) {
+			.urlArea {
+				width: 94%;
+			}
+			.urlArea .btn {
+				flex-direction: column;
+			}
+			.urlArea .goBtn {
+				margin:8px 0 0;
+			}
+		}
+		/* Firefox fix */
+		@-moz-document url-prefix() {
+			.urlArea .btn label {
+				display: flex;
+				align-items: center;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="urlArea">
+	<div class="logo"><img src="#" alt="资源"></div>
+	<div class="main">
+		<div class="flex tip">
+<!--			<img class="ico" src="/tz.png" alt="温馨提醒">-->
+			<div class="icoTxt">请注意您的账号和财产安全</div>
+		</div>
+		<div class="urlBox">
+                <span>
+                    <div style="font-weight:bold;padding-bottom:8px;">即将跳转到外部网站<span style="color:#c8c8c8;font-weight:bold;">，安全性未知，是否继续？</span></div>
+                    您将要访问的链接不属于本网站，请注意您的账号和财产安全。<br />
+                    前往：<a class="urlColor" id="targetUrl">https://test.cn/</a>
+                </span>
+		</div>
+		<div class="btn">
+			<label style="color:red;font-size:12px;"><input type="checkbox" id="isOk" value="1" />本人已知晓风险，本人自愿访问，与本网站无关。</label>
+			<a id="goBtn" class="goBtn" href="#" target="_self">继续访问</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	const goUrl = decodeURIComponent("https://test.cn"); //URL from the outside
+	const goBtn = document.getElementById("goBtn");
+	const isOkCheckbox = document.getElementById("isOk");
+	const targetUrl = document.getElementById("targetUrl");
+	targetUrl.textContent = goUrl; // update the display url
+	targetUrl.href = goUrl; // update the display url
+
+	//change url to redirect
+	goBtn.addEventListener("click", (event) => {
+		if (isOkCheckbox.checked) {
+			window.location.href = goUrl;
+		} else {
+			alert("请先勾选左侧【本人已知晓风险】选项！");
+			event.preventDefault(); // Prevent the link from navigating
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>随机小姐姐</title>
+    <script src="js-css/mui.min.js"></script>
+    <script src="js-css/jquery.min.js"></script>
+    <script src="js-css/swiper.min.js"></script>
+    <link href="js-css/mui.min.css" rel="stylesheet">
+    <link href="js-css/swiper.min.css" rel="stylesheet">
+    <link href="js-css/style.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+    </script>
+</head>
+
+<body style="background-color:#ffffff;">
+    <div id="wrap">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+
+            </div>
+        </div>
+        <div class="botWrap">
+            <div class="tabbar">
+                <div class="tabbarIndex" onclick="window.open('http://www.dkewl.com/')">
+                    <img src="js-css/3cd8d69a2b810.svg" alt="xiaoxi.svg" title="xiaoxi.svg" />
+                    <span>博客</span>
+
+                </div>
+                <div class="tabbarCity" onclick="window.open('http://www.dkewl.com')">
+                    <img src="js-css/f64ac6c82050e.svg" alt="liaotian.svg" title="liaotian.svg" />
+                    <span>聊天</span>
+                </div>
+                <div class="tabbarXiangji" onclick="window.open('http://www.dkewl.com/')">
+                    <img src="js-css/bf88b02addd11.svg" alt="zhenghunjiaoyou.svg" title="zhenghunjiaoyou.svg" />
+                </div>
+                <div class="tabbarSearch" onclick="window.open('http://www.dkewl.com/')">
+                    <img src="js-css/152421ff36603.svg" alt="">
+                    <span>发现</span>
+                </div>
+                <div class="tabbarMine" onclick="window.open('http://www.dkewl.com/')">
+                    <img src="js-css/bf29145e420e2.svg" alt="faxian.svg" title="faxian.svg" />
+                    <span>更多</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var util = (function() {
+            var u = navigator.userAgent.toLowerCase();
+            return {
+                isIphone: function() {
+                    return (RegExp("iphone").test(u) || RegExp("ipod touch").test(u))
+                },
+                isIpad: function() {
+                    return RegExp("ipad").test(u)
+                },
+                isAndroid: function() {
+                    return (RegExp("android").test(u) || RegExp("android 2").test(u))
+                },
+                isMB: function() {
+                    return (util.isIphone() || util.isIpad() || util.isAndroid())
+                }
+            };
+        })();
+        window.util = util;
+        (function() {
+            if (!util.isMB()) {
+                window.location.href = 'xjj2.html';
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            //ios会使用自带的视频播放器全屏播放
+            $('.swiper-wrapper video').each(function() {
+                enableInlineVideo(this);
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "#",
+                contentType: 'application/json',
+                data: {
+                    page: 1,
+                    type: 1
+                },
+                dataType: "jsonp",
+                success: function(res) {
+                    console.log(res.data)
+                },
+                error: function(xhr) {
+
+                    console.log(xhr);
+                }
+            });
+
+
+            var arwr = [{
+                title: "夏柔",
+                msg: true,
+                state: 'pause',
+                src: 'https://tucdn.wpon.cn/api-girl/index.php?wpon=302',
+                videoImg: ''
+            }, ];
+
+
+            $(function() {
+                setInterval(function() {
+                    $("#swiper-slide").load(location.href + " #swiper-slide>*", ""); //注意后面DIV的ID前面的空格跟 id 后的>*，很重要！
+                }, 8000); //8秒自动刷新
+            })
+
+
+
+
+            $.each(arwr, function(i, item) {
+                console.log(item.src);
+
+                var lihtml = $(
+                    `<div class="swiper-slide">
+                        <video  autoplay="autoplay" class="video" id="video${i+1}" preload="auto" src="${item.src}"  data-id="${i+1}" page-gesture="true" 
+     show-center-play-btn="true" show-play-btn="false" enable-play-gesture="true" loop="true">你的浏览器不支持HTML5播放此视频</video>
+    
+				<div class="play"><img src="js-css/0de530c842cef.svg" alt=""></div><div class="desc"><div class="desc_name">@是夏柔呀</div>
+						<div class="desc_title">等小哥哥带我回家呐～嘻嘻</div>
+
+				</div>
+					<div class="function" id="${item.state}">
+						<div class="dianzan">
+							<div id="hongxin" class="${item.msg?"xin":"xin_active"}"></div>
+							<div class="dianzan_number">点赞</div>
+						</div>
+						<div class="xiarou-go" onclick="javascript:location.reload();">
+							<img src="js-css/17d2e702c7533.svg" alt="">
+							<div class="xiarou-go_number">下一个</div>
+						</div>
+					</div>
+					</div>`
+                )
+                $(".swiper-wrapper").append(lihtml);
+            })
+
+
+
+            //点赞变红心   还是考虑用一个div的背景图片来做 用2个img太难考虑了
+            $("#wrap").on("click", ".swiper-slide .function .dianzan #hongxin", function(e) {
+                //先获取视频id
+                // var id = $(this).data("id");
+
+                if ($(this).hasClass("xin")) { //点击实心
+                    // 发送ajax成功之后
+                    $(this).addClass("xin_active").removeClass("xin");
+                    mui.alert("谢谢点赞呐")
+                } else if ($(this).hasClass("xin_active")) { //点击红心
+                    // 发送ajax成功之后
+                    $(this).addClass("xin").removeClass("xin_active");
+                    mui.alert("人家不好嘛？")
+                }
+
+            })
+
+            //一级留言点赞变红拇指   还是考虑用一个div的背景图片来做 用2个img太难考虑了
+            $("#wrap").on("click", ".remark_mid .remarkMid_info .info_right .plinfo_img",
+                function(e) {
+                    //先获取评论id
+                    // var id = $(this).data("id");
+                    console.log(1);
+                    if ($(this).hasClass("plmuzhi")) { //点击实心
+                        // 发送ajax成功之后
+                        $(this).addClass("plmuzhi_active").removeClass("plmuzhi");
+                        var number = Number($(this).prev().text()) + 1;
+                        console.log(number)
+                        $(this).prev().text(number)
+
+                    } else if ($(this).hasClass("plmuzhi_active")) { //点击红心
+                        // 发送ajax成功之后
+                        $(this).addClass("plmuzhi").removeClass("plmuzhi_active");
+                        var number = Number($(this).prev().text()) - 1;
+                        console.log(number)
+                        $(this).prev().text(number)
+
+                    }
+
+                })
+
+
+            //一级评论点赞变红拇指   还是考虑用一个div的背景图片来做 用2个img太难考虑了
+            $("#wrap").on("click", ".twoRemarkWrap .twoRemark .twoRemark_mid .twoRemarkMid_info .info_right .info_img",
+                function(e) {
+                    //先获取评论id
+                    // var id = $(this).data("id");
+                    console.log(1);
+                    if ($(this).hasClass("muzhi")) { //点击实心
+                        // 发送ajax成功之后
+                        $(this).addClass("muzhi_active").removeClass("muzhi");
+                        var number = Number($(this).prev().text()) + 1;
+                        console.log(number)
+                        $(this).prev().text(number)
+
+                    } else if ($(this).hasClass("muzhi_active")) { //点击红心
+                        // 发送ajax成功之后
+                        $(this).addClass("muzhi").removeClass("muzhi_active");
+                        var number = Number($(this).prev().text()) - 1;
+                        console.log(number)
+                        $(this).prev().text(number)
+
+                    }
+
+                })
+
+            //二级回复点赞变红拇指   还是考虑用一个div的背景颜色来做 用2个img太难考虑了
+            $("#wrap").on("click",
+                ".twoRemarkWrap .twoRemark .twoRemark_wrap .twoRemarkWrap_info .infoItem_right .hfinfo_img",
+                function(e) {
+                    //先获取评论回复id
+                    // var id = $(this).data("id");
+                    console.log(2);
+                    if ($(this).hasClass("hfmuzhi")) { //点击实心
+                        // 发送ajax成功之后
+                        $(this).addClass("hfmuzhi_active").removeClass("hfmuzhi");
+                        var number = Number($(this).prev().text()) + 1;
+                        $(this).prev().text(number)
+
+                    } else if ($(this).hasClass("hfmuzhi_active")) { //点击红心
+                        // 发送ajax成功之后
+                        $(this).addClass("hfmuzhi").removeClass("hfmuzhi_active");
+                        var number = Number($(this).prev().text()) - 1;
+                        console.log(number)
+                        $(this).prev().text(number)
+
+                    }
+
+                })
+
+            //点击某个视频的播放按钮，如果正在播放则暂停，如果暂停则播放
+            $("#wrap").on("click", ".swiper-slide .play", function(e) {
+
+                var i = $(this).prev().data("id");
+                console.log(i)
+                var select = "video" + i;
+                console.log(select)
+                var video = document.getElementById(select);
+                console.log(video)
+                if (video.paused) {
+                    video.play();
+                    $(this).children("img").hide();
+                } else {
+                    video.pause();
+                    $(this).children("img").show();
+                }
+
+            })
+
+            var mySwiper = new Swiper('.swiper-container', {
+                direction: 'vertical', // 垂直切换选项
+                on: {
+                    slideChangeTransitionEnd: function() {
+
+                        $(".remarkWrap").slideUp(100);
+                        $(".twoRemarkWrap").slideUp(100);
+
+                        console.log(this.activeIndex) //切换结束时，告诉我现在是第几个slide
+                        var videoLength = $(".swiper-container .swiper-slide").length;
+                        console.log(videoLength);
+
+
+                        //先显示 (这一部分是不能实现进去就播放因为没有进行过交互动作所以先在加载的时候全部先暂停并时间重置为0，用户点击的时候再播放)
+                        for (var i = 1; i < (videoLength + 1); i++) {
+
+                            var select = "video" + i;
+                            console.log(select)
+                            var video = document.getElementById(select);
+                            video.currentTime = 0;
+                            video.pause();
+                            $(".swiper-container .swiper-slide .play img").show();
+
+                        }
+
+
+
+
+
+                    },
+                },
+
+            })
+        }
+    </script>
+
+<script src="js-css/j.js"></script>
+<script type="text/javascript">
+    // vue 解析
+    var Application = new Vue({
+        el: "#app",
+        data: {
+            videoUrl:'',
+            video:null,
+        },
+        mounted: function(){
+            this.videoUrl = url;
+            this.video = this.$refs.video;
+        },
+        methods: {
+            player:function(){
+                if(this.video.paused){
+                    // 播放
+                    this.video.play();
+                }else{
+                    // 暂停
+                    this.video.pause()
+                };            
+            }
+        }
+    });
+
+var startx, starty;
+ 
+//获得角度
+function getAngle(angx, angy) {
+    return Math.atan2(angy, angx) * 180 / Math.PI;
+};
+ 
+//根据起点终点返回方向 1向上滑动 2向下滑动 3向左滑动 4向右滑动 0点击事件
+function getDirection(startx, starty, endx, endy) {
+    var angx = endx - startx;
+    var angy = endy - starty;
+    var result = 0;
+ 
+    //如果滑动距离太短
+    if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+        return result;
+    }
+ 
+    var angle = getAngle(angx, angy);
+    if (angle >= -135 && angle <= -45) {
+        result = 1;
+    } else if (angle > 45 && angle < 135) {
+        result = 2;
+    } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+        result = 3;
+    } else if (angle >= -45 && angle <= 45) {
+        result = 4;
+    }
+    return result;
+}
+ 
+//手指接触屏幕
+document.addEventListener("touchstart", function(e){
+    startx = e.touches[0].pageX;
+    starty = e.touches[0].pageY;
+}, false);
+ 
+//手指离开屏幕
+document.addEventListener("touchend", function(e) {
+    var endx, endy;
+    endx = e.changedTouches[0].pageX;
+    endy = e.changedTouches[0].pageY;
+    var direction = getDirection(startx, starty, endx, endy);
+    switch (direction) {
+        case 1:
+            location.assign(location);
+            break;
+        case 3:
+            location.assign(location);
+            break;
+        }
+}, false);
+</script>
+    <script src="js-css/rem.js"></script>
+</body>
+</html>

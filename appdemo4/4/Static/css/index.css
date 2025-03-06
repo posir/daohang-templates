@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+html, input, select, textarea {
+  font-size: 16pt;
+}
+@media screen and (max-width: 1680px) {
+  html, input, select, textarea {
+    font-size: 13pt;
+  }
+}
+@media screen and (max-width: 1280px) {
+  html, input, select, textarea {
+    font-size: 12pt;
+  }
+}
+@media screen and (max-width: 736px) {
+  html, input, select, textarea {
+    font-size: 10pt;
+  }
+}
+body {
+  font: 1em "Microsoft YaHei", Arial, Helvetica, sans-serif;
+  color: #fff;
+  background: #333;
+  line-height: 1.5;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+}
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+a:focus {
+  outline: 0;
+}
+img {
+  border: 0;
+  max-width: 100%;
+}
+h1 {
+  font-size: 2.9em;
+}
+p {
+  font-size: 1.3em;
+  margin: 1em 0 1.5em 0;
+}
+.d-flex {
+  display: flex;
+}
+.d-column {
+  flex-direction: column;
+}
+.body {
+  display: table;
+  position: relative;
+  background-image: url(//yuanxiapi.cn/api/img/);
+  background-attachment: fixed;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: cover;
+  padding: 7em 0;
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+  text-align: center
+}
+.body:after {
+  content: '';
+  z-index: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.cont {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  padding: 0.7em;
+}
+.logo {
+  margin-bottom: 2em;
+  display: inline-block;
+}
+.logo img {
+  width: 300px
+}
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #007bff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: 0;
+  padding: 15px 45px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+.btn:hover {
+  background-color: #f1404b;
+}
+
+
+@media screen and (max-width: 980px) {
+  .body {
+    padding: 5em 0;
+  }
+}
+@media screen and (max-width: 480px) {
+.logo img {
+    width: 250px;
+}
+	
+  .btn {
+    width: 100%;
+	margin: 10px 0;
+	padding: 10px;
+	
+  }
+}
+
+@media screen and (max-width: 321px) {
+.logo img {
+    width: 200px;
+}
+h1 {
+    font-size: 2em;
+}
+}

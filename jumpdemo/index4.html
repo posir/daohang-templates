@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>倒计时跳转页面</title>	
+<script type="text/javascript">	
+    //setTimeout("javascript:location.href='in/index1.html'", 3000);
+    var t=4; //设定跳转的时间
+    setInterval("refer()",1000); //启动1秒定时
+    function refer(){
+        if(t===0){
+            location="index.html"; //#设定跳转的链接地址
+        }
+        document.getElementById('show').innerHTML="将在"+t+"秒后跳转到新系统..."; // 显示倒计时
+        t--; // 计数器递减
+    }
+</script>
+</head>
+<body>
+<h2>页面倒计时跳转</h2>
+<h3><span id="show">将在5秒后跳转到新页面...</span></h3>
+<h4>若未自动跳转，请<a href="index.html">点击此处</a>到新页面。</h4>
+</body>	
+</html>

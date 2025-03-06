@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>跳转页面中....</title>
+  <style>
+  #count_down{padding:0 0.5em;font-size:16px;font-weight:bold;color:red;}
+  .wrap{width:400px;margin:50px auto;padding:30px 20px;border-radius:5px;background-color:#BBD3E7;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <p><i id="count_down">3</i>秒后跳转...</p>
+</div>
+<script>
+  function count_down(t){
+    if(t == 0) { //ready to jump
+      alert('done.'); 
+    }
+    else{	
+      document.getElementById("count_down").innerHTML = t--;	
+      setTimeout(
+        function(){
+          count_down(t);
+        }, 
+        1000);
+    }
+  }
+  count_down(3);
+</script>
+</body>
+</html>
